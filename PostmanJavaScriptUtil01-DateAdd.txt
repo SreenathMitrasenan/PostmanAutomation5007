@@ -1,0 +1,17 @@
+//Agenda is to subtract & add dates in java script
+//You can put this in postman Test console to check
+
+var moment = require('moment');
+var Date1 = moment('08/06/2016', 'DD-MM-YYYY');
+var Date2 = moment('19/03/1972', 'DD-MM-YYYY');
+var today = moment();
+
+// Subracting date from today to Date1 , the result will be number of days
+var daysDiff=today.diff(Date1, 'days'); 
+
+
+// Adding daysDiff, which is a number in days() to Date 2 to get the new date, the different formats include ‘YYYY-MM-DD’ , ‘YYYY-DD-MM’, DD-MMM-YY ..etc
+
+var AddedDate = Date2.add(daysDiff,'days').format('YYYY-DD-MM')
+pm.environment.set("TestDate", AddedDate);
+console.log("Aged Date : "+AddedDate);

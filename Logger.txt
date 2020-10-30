@@ -1,0 +1,19 @@
+let opts = {
+    requestName: request.name || request.url,
+    fileExtension: 'json',
+    mode: 'appendFile', // Change this to any function of the fs library of node to use it.
+    uniqueIdentifier: pm.info.iteration,
+    responseData: pm.response.text()
+    };
+ 
+pm.sendRequest({
+    url: 'http://localhost:3000/write',
+    method: 'POST',
+    header: 'Content-Type:application/json',
+    body: {
+        mode: 'raw',
+        raw: JSON.stringify(opts)
+    }
+}, function (err, res) {
+    console.log(res);
+});
